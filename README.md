@@ -24,3 +24,15 @@ flux bootstrap github \
   --personal
 
 ```
+
+
+Add a repository to flux
+```sh
+export URL="https://github.com/stefanprodan/podinfo"
+export YAML_FILE="podinfo-source.yaml"
+flux create source git podinfo \
+  --url=$URL \
+  --branch=master \
+  --interval=30s \
+  --export > ./clusters/$CLUSTER_NAME/$YAML_FILE
+  ```
