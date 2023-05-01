@@ -13,11 +13,13 @@ export GITHUB_USER=your_username
 export GITHUB_TOKEN=your_personal_access_token
 
 export BRANCH_NAME="test-2"
+export OWNER="adventuresincode"
+export REPO="flux-test"
 
 flux bootstrap github \
-  --owner=$GITHUB_USER \
-  --repository=flux-config \
-  --branch=$BRANCH_NAME \
+  --owner=$OWNER \
+  --repository=$REPO \
+  --branch=main \
   --path=./clusters/$CLUSTER_NAME \
   --personal
 
