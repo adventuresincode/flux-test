@@ -9,4 +9,4 @@ spec:
   interval: 30s
   ref:
     branch: master
-  url: https://github.com/open-policy-agent/gatekeeper
+  url: https://github.com/open-policy-agent/gatekeeper/deploy
