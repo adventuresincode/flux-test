@@ -8,5 +8,5 @@ metadata:
 spec:
   interval: 30s
   ref:
-    branch: master
-  url: https://github.com/open-policy-agent/gatekeeper/deploy?ref=master
+    branch: release-3.12
+  url: https://github.com/open-policy-agent/gatekeeper
