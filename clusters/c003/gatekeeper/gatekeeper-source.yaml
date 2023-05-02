@@ -1,14 +1,11 @@
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
 metadata:
   name: gatekeeper
-  namespace: gatekeeper-system
+  namespace: flux-system
 spec:
-  interval: 5m0s
-  path: ./
-  prune: true
-  serviceAccountName: opa-gatekeeper
-  sourceRef:
-    kind: GitRepository
-    name: gatekeeper
+  interval: 30s
+  ref:
+    branch: test-1
+  url: https://github.com/open-policy-agent/gatekeeper
