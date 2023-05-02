@@ -7,5 +7,5 @@ metadata:
 spec:
   interval: 30s
   ref:
-    branch: test-2
+    branch: test-1
   url: https://github.com/open-policy-agent/gatekeeper
