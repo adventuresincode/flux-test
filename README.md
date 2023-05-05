@@ -36,3 +36,20 @@ flux create source git podinfo \
   --interval=30s \
   --export > ./clusters/$CLUSTER_NAME/$YAML_FILE
   ```
+
+
+  kubectl create clusterrolebinding cluster-admin-binding \
+    --clusterrole cluster-admin \
+    --user opa-gatekeeper
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: gatekeeper-system
+  name: opa-gatekeeper
+rules:
+- apiGroups: ["apiextensions.k8s.io"] 
+  resources: ["customresourcedefinitions"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+```  
