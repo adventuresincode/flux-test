@@ -41,9 +41,8 @@ git push
 
 flux create kustomization gatekeeper \
 --namespace=gatekeeper-system \
---service-account=opa-gatekeeper \
 --source=gatekeeper \
---path="./" \
+--path="./deploy" \
 --prune=true \
 --interval=5m \
 --export > ./clusters/$CLUSTER_NAME/gatekeeper/gatekeeper-kustomization.yaml
