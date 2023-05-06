@@ -22,7 +22,7 @@ flux bootstrap github \
   --branch=$BRANCH_NAME \
   --path=./clusters/$CLUSTER_NAME \
   --personal
-
+git pull 
 ```
 ```sh
 #Create a flux source 
