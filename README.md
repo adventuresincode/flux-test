@@ -2,7 +2,7 @@
 
 Create a local kind cluster
 ```sh
-export CLUSTER_NAME=c002
+export CLUSTER_NAME=c005
 kind create cluster --name $CLUSTER_NAME
 ```
 Install flux locally
@@ -12,19 +12,31 @@ Bootstrap the cluster
 export GITHUB_USER=your_username
 export GITHUB_TOKEN=your_personal_access_token
 
-export BRANCH_NAME="test-2"
+export BRANCH_NAME="test-003"
 export OWNER="adventuresincode"
 export REPO="flux-test"
 
 flux bootstrap github \
   --owner=$OWNER \
   --repository=$REPO \
-  --branch=main \
+  --branch=$BRANCH_NAME \
   --path=./clusters/$CLUSTER_NAME \
   --personal
 
 ```
-
+```sh
+#Create a flux source 
+mkdir ./clusters/$CLUSTER_NAME
+mkdir ./clusters/$CLUSTER_NAME/gatekeeper/
+flux create kustomization gatekeeper \
+--namespace=gatekeeper-system \
+--service-account=opa-gatekeeper \
+--source=gatekeeper \
+--path="./" \
+--prune=true \
+--interval=5m \
+--export > ./clusters/$CLUSTER_NAME/gatekeeper/gatekeeper-kustomization.yaml
+```
 
 Add a repository to flux
 ```sh
