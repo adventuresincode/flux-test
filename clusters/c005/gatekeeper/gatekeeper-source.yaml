@@ -1,0 +1,11 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: gatekeeper
+  namespace: gatekeeper-system
+spec:
+  interval: 30s
+  ref:
+    branch: release-3.12
+  url: https://github.com/open-policy-agent/gatekeeper

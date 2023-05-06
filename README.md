@@ -28,6 +28,17 @@ git pull
 #Create a flux source 
 mkdir ./clusters/$CLUSTER_NAME
 mkdir ./clusters/$CLUSTER_NAME/gatekeeper/
+export OPA_BOOTSTRAPPER_VERSION="release-3.12"
+flux create source git gatekeeper \
+  --namespace=gatekeeper-system \
+  --url=https://github.com/open-policy-agent/gatekeeper \
+  --branch=$OPA_BOOTSTRAPPER_VERSION \
+  --interval=30s \
+  --export > ./clusters/$CLUSTER_NAME/gatekeeper/gatekeeper-source.yaml
+
+git add -A && git commit -m "Added opa-gatekeeper GitRepository"
+git push
+
 flux create kustomization gatekeeper \
 --namespace=gatekeeper-system \
 --service-account=opa-gatekeeper \
@@ -36,6 +47,9 @@ flux create kustomization gatekeeper \
 --prune=true \
 --interval=5m \
 --export > ./clusters/$CLUSTER_NAME/gatekeeper/gatekeeper-kustomization.yaml
+
+git add -A && git commit -m "Added gatekeeper Kustomization"
+git push
 ```
 
 Add a repository to flux
