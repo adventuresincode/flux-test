@@ -9,7 +9,7 @@ spec:
   interval: 5m0s
   path: ./deploy
   prune: true
-  serviceAccountName: opa-gatekeeper-admin
+  #serviceAccountName: opa-gatekeeper-admin
   sourceRef:
     kind: GitRepository
     name: gatekeeper
